@@ -169,6 +169,7 @@ public class UD6Tarea2 {
                         break;
                 }
             }
+            scanner.close();
         }
 
         public static void menuopt() {
@@ -200,8 +201,6 @@ public class UD6Tarea2 {
 
 
 
-
             }
-
     }
 
