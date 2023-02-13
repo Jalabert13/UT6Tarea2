@@ -183,23 +183,24 @@ public class UD6Tarea2 {
                 play(playlist);
             }
             catch (NoSuchElementException e) {
-                System.out.println("");
                 play(playlist);
             }
             }
 
         public static void menuopt() {
 
-            System.out.println("¿Qué quiere hacer?" +
-                    "\n---------------------------------------------------------------" +
-                    "\n0- Salir de la lista de reproducción" +
-                    "\n1- Reproducir siguiente canción de la lista " +
-                    "\n2- Reproducir la canción previa de la lista" +
-                    "\n3- Repetir la canción actual" +
-                    "\n4- Imprimir la lista de canciones en la playlist " +
-                    "\n5 – Volver a imprimir el menú." +
-                    "\n6 – Borrar cancion actual." +
-                    "\n---------------------------------------------------------------");
+            System.out.println("""
+                    ¿Qué quiere hacer?
+                    \n---------------------------------------------------------------
+                    \n0- Salir de la lista de reproducción
+                    \n1- Reproducir siguiente canción de la lista
+                    \n2- Reproducir la canción previa de la lista"
+                    \n3- Repetir la canción actual"
+                    \n4- Imprimir la lista de canciones en la playlist "
+                    \n5 – Volver a imprimir el menú.
+                    \n6 – Borrar cancion actual.
+                    \n---------------------------------------------------------------
+                    """);
         }
         public static void printList(LinkedList<song> listo) {
             Iterator<song> it = listo.iterator();
