@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class UD6Tarea2 {
     public static class song {
  String titulo;
@@ -16,8 +15,8 @@ public class UD6Tarea2 {
 
         @Override
         public String toString() {
-            return "titulo: " + titulo + '\'' +
-                    ", duracion: " + duracion ;
+            return "Titulo: " + titulo + '\'' +
+                    ", Duracion: " + duracion ;
         }
     }
     public static class album {
@@ -111,66 +110,83 @@ public class UD6Tarea2 {
             }
 
             boolean haciaAdelante = true;
-            while(continuar) {
-                int opcion = scanner.nextInt();
-                scanner.nextLine();
-                switch (opcion) {
-                    case 0:
-                        System.out.println("Gracias por la aclaración, nos vemos!!");
-                        continuar = false;
-                        break;
-                    case 1:
-                        if (!haciaAdelante) {
-                            if (it.hasNext())
-                                it.next();
-                            haciaAdelante = true;
-                        }
-                        if (it.hasNext()) {
-                            System.out.println("Escuchando " + it.next());
-                        } else {
-                            System.out.println("Ya no hay más canciones en la lista");
-                            haciaAdelante = false;
-                        }
-                        break;
-                    case 2:
-                        if(haciaAdelante) {
-                            if (it.hasPrevious())
+            try {
+                while (continuar) {
+                    int opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opcion) {
+                        case 0:
+                            System.out.println("Gracias por la aclaración, nos vemos!!");
+                            continuar = false;
+                            break;
+                        case 1:
+                            if (!haciaAdelante) {
+                                if (it.hasNext())
+                                    it.next();
+                                haciaAdelante = true;
+                            }
+                            if (it.hasNext()) {
+                                System.out.println("Escuchando " + it.next());
+                            } else {
+                                System.out.println("Ya no hay más canciones en la lista");
+                                haciaAdelante = false;
+                            }
+                            break;
+
+                        case 2:
+
+                                if (haciaAdelante) {
+                                    if (it.hasPrevious())
+                                        it.previous();
+                                    haciaAdelante = false;
+                                }
+                                if (it.hasPrevious()) {
+                                    System.out.println("Escuchando " + it.previous());
+                                } else {
+                                    System.out.println("Es la primera cancion de la lista");
+                                    it.next();
+                                    haciaAdelante = true;
+                                }
+                                break;
+
+                        case 3:
+                            try {
                                 it.previous();
-                            haciaAdelante = false;
-                        }
-                        if (it.hasPrevious()) {
-                            System.out.println("Escuchando " + it.previous());
-                        } else {
-                            System.out.println("Es la primera cancion de la lista");
-                            it.next();
-                            haciaAdelante = true;
-                        }
-                        break;
-                    case 3:
-                        it.previous();
-                        System.out.println("Escuchando: " + it.next());
-                        break;
-                    case 4:
-                        printList(playlist);
-                        break;
-                    case 5:
-                        menuopt();
-                        break;
-                    case 6:
-                        it.previous();
-                        System.out.println(it.next().getTitulo()+" ha sido eliminada de la lista.");
-                        it.remove();
-                        if (it.hasNext()) {
-                            System.out.println("Escuchando " + it.next());
-                        }
-                        else {
-                            System.out.println("Escuchando " + it.previous());
-                        }
-                        break;
+                                System.out.println("Escuchando: " + it.next());
+                                break;
+                            } catch (NoSuchElementException e) {
+                                System.out.println("No hay mas canciones en la lista");
+                            }
+                        case 4:
+                            printList(playlist);
+                            break;
+                        case 5:
+                            menuopt();
+                            break;
+                        case 6:
+                                it.previous();
+                                System.out.println(it.next().getTitulo() + " ha sido eliminada de la lista.");
+                                it.remove();
+                                if (it.hasNext()) {
+                                    System.out.println("Escuchando " + it.next());
+                                } else {
+                                    System.out.println("Escuchando " + it.previous());
+                                }
+                                break;
+
+                                default: System.out.println("No se puede poner ese numero");
+                                break;
+                    }
                 }
+            }catch (InputMismatchException e)  {
+                System.out.println("No puedes poner letras");
+                play(playlist);
             }
-            scanner.close();
-        }
+            catch (NoSuchElementException e) {
+                System.out.println("");
+                play(playlist);
+            }
+            }
 
         public static void menuopt() {
 
@@ -184,23 +200,17 @@ public class UD6Tarea2 {
                     "\n5 – Volver a imprimir el menú." +
                     "\n6 – Borrar cancion actual." +
                     "\n---------------------------------------------------------------");
-
         }
         public static void printList(LinkedList<song> listo) {
             Iterator<song> it = listo.iterator();
+            int i = 0;
             while (it.hasNext()) {
-                System.out.println("Nodo: " + it.next());
+                i++;
+                System.out.println("Cancion" + i + ": " + it.next());
+
             }
             System.out.println("-----");
         }
-
-
-
-
-
-
-
-
             }
     }
 
