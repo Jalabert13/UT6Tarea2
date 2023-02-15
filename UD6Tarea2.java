@@ -1,8 +1,8 @@
 import java.util.*;
 public class UD6Tarea2 {
     public static class song {
- String titulo;
- double duracion;
+    String titulo;
+    double duracion;
 
         public song(String titulo, double duracion) {
             this.titulo= titulo;
@@ -194,9 +194,9 @@ public class UD6Tarea2 {
                     \n---------------------------------------------------------------
                     \n0- Salir de la lista de reproducción
                     \n1- Reproducir siguiente canción de la lista
-                    \n2- Reproducir la canción previa de la lista"
-                    \n3- Repetir la canción actual"
-                    \n4- Imprimir la lista de canciones en la playlist "
+                    \n2- Reproducir la canción previa de la lista
+                    \n3- Repetir la canción actual
+                    \n4- Imprimir la lista de canciones en la playlist 
                     \n5 – Volver a imprimir el menú.
                     \n6 – Borrar cancion actual.
                     \n---------------------------------------------------------------
